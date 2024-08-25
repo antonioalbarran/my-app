@@ -12,11 +12,13 @@ export class ListaPreciosService {
   private urlListaDePrecios = 'http://it.albarran.com.mx/endpoint/api/productos/v1/lista-precios?idSucursal=';
 
   getAllProducts(token: string,id_sucursal: number): Observable<any> {
+
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     }
-    this.urlListaDePrecios = this.urlListaDePrecios + id_sucursal
+    this.urlListaDePrecios = this.urlListaDePrecios + id_sucursal;
+    console.log(this.urlListaDePrecios);
     return this.http.get<any>(this.urlListaDePrecios,{'headers':headers})
   }
 }

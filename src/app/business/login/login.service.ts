@@ -1,7 +1,8 @@
+//Eliminar despues
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { usuario } from '../models/usuario';
+import { usuario } from '../../models/usuario';
 
 @Injectable({
   providedIn: 'root'

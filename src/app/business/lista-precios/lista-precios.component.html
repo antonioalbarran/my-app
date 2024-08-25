@@ -1,0 +1,118 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <a
+      href="#"
+      class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+      id="test"
+    >
+      <i class="fas fa-download fa-sm text-white-50"></i>Exportar a Excel
+    </a>
+  </div>
+  <div class="d-sm-flex align-items-lg-center justify-content-between mb-4">
+    <div class="row">
+      <div class="col-mb-2">
+        <label for="select">Linea</label>
+        <select class="form-control" id="select">
+          <option>Limpieza camara de combustion</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="btnIva">Iva</label><br />
+        <button class="btn btn-primary" id="btnIva">Iva</button>
+      </div>
+      <div class="col">
+        <label for="btnExistencia">Existencia</label><br />
+        <button class="btn btn-primary" id="btnExistencia">Existencia</button>
+      </div>
+      <div class="col">
+        <label for="btn1Llanta">Precio de una llanta</label><br />
+        <button class="btn btn-primary" id="btn1Llanta">
+          Precio de una llanta
+        </button>
+      </div>
+      <div class="col">
+        <label for="btn2Llanta">Precio de dos llantas</label><br />
+        <button class="btn btn-primary" id="btn2Llanta">
+          Precio de dos llantas
+        </button>
+      </div>
+      <div class="col">
+        <label for="btn4Llanta">Precio de cuatro llantas</label><br />
+        <button class="btn btn-primary" id="btn4Llanta">
+          Precio de cuatro llantas
+        </button>
+      </div>
+      <div class="col">
+        <label for="btnActualizar">Actualizar</label><br />
+        <button class="btn btn-primary" id="btnActualizar">Actualizar</button>
+      </div>
+      <div class="col-mb-4">
+        <form
+          class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+        >
+          <label for="">Ancho Alto Rin</label>
+          <div class="input-group">
+            <input type="text" size="4" class="form-control" />
+            <input type="text" size="5" class="form-control" />
+            <input type="text" size="4" class="form-control" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="table-responsive" id="contenido">
+      <table
+        class="table table-bordered table-sm"
+        id="tablaDePrecios"
+        name="tablaDePrecios"
+      >
+        <thead>
+          <tr>
+            <th class="text-center">Nombre</th>
+            <th class="text-center">Codigo</th>
+            <th class="text-center">Precio Base</th>
+            <th class="text-center">Precio -25%</th>
+            <th class="text-center">Precio Intel</th>
+            <th class="text-center">Precio 3 Meses</th>
+            <th class="text-center">Existencia</th>
+            <th class="text-center">Red</th>
+            <th class="text-center">Promocion</th>
+            <th class="text-center">Codigo Albarran</th>
+          </tr>
+        </thead>
+        <tbody>
+          @if (productos$ | async; as productos){ @for (producto of productos;
+          track producto.codigo) {
+          <tr class="{{ getClassCSS(producto.id_clasificacion) }}">
+            <td class="text-capitalize">{{ producto.nombre }}</td>
+            <td class="text-center">{{ producto.codigo }}</td>
+            <td class="text-center">
+              {{ producto.precio_max | currency : "MXN" : "$" : "1.0-2" }}
+            </td>
+            <td class="text-center">
+              {{ producto.precio | currency : "MXN" : "$" : "1.0-2" }}
+            </td>
+            <td class="text-center">
+              {{ producto.precio_intel | currency : "MXN" : "$" : "1.0-2" }}
+            </td>
+            <td class="text-center">
+              {{ producto.precio_3 | currency : "MXN" : "$" : "1.0-2" }}
+            </td>
+            <td class="text-center">{{ producto.existencia }}</td>
+            <td class="text-center">{{ producto.red }}</td>
+            <td class="text-center">{{ producto.promocion }}</td>
+            <td class="text-center">{{ producto.codigo_albarran }}</td>
+          </tr>
+          } } @else{
+          <tr class="bg-warning text-dark">
+            <td colspan="10" class="text-center">No hay resultados</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- /.container-fluid -->
