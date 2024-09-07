@@ -9,59 +9,77 @@
       <i class="fas fa-download fa-sm text-white-50"></i>Exportar a Excel
     </a>
   </div>
-  <div class="d-sm-flex align-items-lg-center justify-content-between mb-4">
+  <div class="align-items-lg-center justify-content-between mb-4">
     <div class="row">
-      <div class="col-mb-2">
-        <label for="select">Linea</label>
-        <select class="form-control" id="select">
-          <option>Limpieza camara de combustion</option>
+      <div class="col-xl-4 col-md-4 mb-4">
+        <label for="id_linea">Linea</label>
+        <select class="form-control" name="id_linea" id="id_linea">
+          <option value="0">Todos</option>
+          <option value="1">Linea</option>
         </select>
       </div>
-      <div class="col">
-        <label for="btnIva">Iva</label><br />
-        <button class="btn btn-primary" id="btnIva">Iva</button>
+      <div class="col-xl-4 col-md-4 mb-4">
+        <label for="buscar">Buscar</label>
+        <input type="text" class="form-control" name="buscar" id="buscar" placeholder="Buscar"/>
       </div>
-      <div class="col">
-        <label for="btnExistencia">Existencia</label><br />
-        <button class="btn btn-primary" id="btnExistencia">Existencia</button>
+      <div class="col-xl-4 col-md-4 mb-4">
+        <label for="ancho">Filtrar por Medida</label>
+        <div class="input-group">
+          <input type="text" class="form-control" name="ancho" id="ancho" placeholder="Ancho">
+          <input type="text" class="form-control" name="alto" id="alto" placeholder="Alto">
+          <input type="text" class="form-control" name="rin" id="rin" placeholder="Rin">
+        </div>
       </div>
-      <div class="col">
-        <label for="btn1Llanta">Precio de una llanta</label><br />
-        <button class="btn btn-primary" id="btn1Llanta">
-          Precio de una llanta
+    </div>
+    <div class="row">
+      <div class="col-sm-1  mx-auto">
+        <button class="btn btn-primary w-100 h-100" name="bnt_iva" id="bnt_iva"
+          (click)="bnt_iva()" [ngClass]="{'btn-primary':conIVA, 'btn-secondary':!conIVA}">
+          {{bntIVAText}}
         </button>
       </div>
-      <div class="col">
-        <label for="btn2Llanta">Precio de dos llantas</label><br />
-        <button class="btn btn-primary" id="btn2Llanta">
-          Precio de dos llantas
+      <div class="col-sm-1 mx-auto">
+        <button class="btn btn-primary w-100 h-100" name="bnt_servicios" id="bnt_servicios"
+        (click)="bnt_servicios()" [ngClass]="{'btn-primary':conServicios, 'btn-secondary':!conServicios}">
+          {{bntServiciosText}}
+      </button>
+      </div>
+      <div class="col-sm-1 mx-auto">
+        <button class="btn btn-primary w-100 h-100" name="bnt_existencia" id="bnt_existencia"
+          (click)="bnt_existencia()" [ngClass]="{'btn-primary':conExistencia, 'btn-secondary':!conExistencia}">
+          {{bntExistenciaText}}
         </button>
       </div>
-      <div class="col">
-        <label for="btn4Llanta">Precio de cuatro llantas</label><br />
-        <button class="btn btn-primary" id="btn4Llanta">
-          Precio de cuatro llantas
+      <div class="col-sm-1 mx-auto">
+        <button class="btn btn-primary w-100 h-100" name="bnt_llanta" id="bnt_llanta"
+          (click)="bnt_llantas(1)" [ngClass]="{'btn-primary':unaLlanta, 'btn-secondary':!unaLlanta}">
+          Una Llanta
         </button>
       </div>
-      <div class="col">
-        <label for="btnActualizar">Actualizar</label><br />
-        <button class="btn btn-primary" id="btnActualizar">Actualizar</button>
+      <div class="col-sm-1 mx-auto">
+        <button class="btn btn-primary w-100 h-100" name="bnt_2_llantas" id="bnt_2_llantas"
+          (click)="bnt_llantas(2)" [ngClass]="{'btn-primary':dosLlantas, 'btn-secondary':!dosLlantas}">
+          Dos Llantas
+        </button>
       </div>
-      <div class="col-mb-4">
-        <form
-          class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
-        >
-          <label for="">Ancho Alto Rin</label>
-          <div class="input-group">
-            <input type="text" size="4" class="form-control" />
-            <input type="text" size="5" class="form-control" />
-            <input type="text" size="4" class="form-control" />
-          </div>
-        </form>
+      <div class="col-sm-1 mx-auto">
+        <button class="btn btn-primary w-100 h-100" name="bnt_3_llantas" id="bnt_3_llantas"
+          (click)="bnt_llantas(3)" [ngClass]="{'btn-primary':tresLlantas, 'btn-secondary':!tresLlantas}">
+          Tres Llantas
+        </button>
+      </div>
+      <div class="col-sm-1 mx-auto">
+        <button class="btn btn-primary w-100 h-100" name="bnt_4_llantas" id="bnt_4_llantas"
+          (click)="bnt_llantas(4)" [ngClass]="{'btn-primary':cuatroLlantas, 'btn-secondary':!cuatroLlantas}">
+          Cuatro Llantas
+        </button>
+      </div>
+      <div class="col-sm-1 mx-auto">
+        <button class="btn btn-primary w-100 h-100" name="bnt_actualizar" id="bnt_actualizar">Actualizar</button>
       </div>
     </div>
   </div>
-  <div class="row">
+  <!--<div class="row">-->
     <div class="table-responsive" id="contenido">
       <table
         class="table table-bordered table-sm"
@@ -83,9 +101,8 @@
           </tr>
         </thead>
         <tbody>
-          @if (productos$ | async; as productos){ @for (producto of productos;
-          track producto.codigo) {
-          <tr class="{{ getClassCSS(producto.id_clasificacion) }}">
+          <tr *ngFor="let producto of productos; let i = index"
+            class="{{ getClassCSS(producto.id_clasificacion) }}">
             <td class="text-capitalize">{{ producto.nombre }}</td>
             <td class="text-center">{{ producto.codigo }}</td>
             <td class="text-center">
@@ -105,14 +122,13 @@
             <td class="text-center">{{ producto.promocion }}</td>
             <td class="text-center">{{ producto.codigo_albarran }}</td>
           </tr>
-          } } @else{
           <tr class="bg-warning text-dark">
             <td colspan="10" class="text-center">No hay resultados</td>
           </tr>
-          }
+
         </tbody>
       </table>
-    </div>
+    <!-- </div>-->
   </div>
 </div>
-<!-- /.container-fluid -->
+
