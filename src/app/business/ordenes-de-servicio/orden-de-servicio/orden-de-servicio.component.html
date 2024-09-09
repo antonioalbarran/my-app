@@ -1,0 +1,251 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="align-items-lg-center justify-content-between mb-4">
+        <form>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" name="txt_factura" id="txt_factura" placeholder="Factura"/>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="txt_orden" id="txt_orden" placeholder="Orden"/>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="txt_placa" id="txt_placa" placeholder="Placa"/>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="txt_cliente" id="txt_cliente" placeholder="Cliente"/>
+                </div>
+            </div>
+        </form>
+    </div>    
+    <!-- End Page Heading -->
+
+    <!-- Collapsable Card Example -->
+    <div class="card shadow mb-4">
+        <a href="#collapseCardGenerales" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardGenerales">
+            <h6 class="m-0 font-weight-bold text-primary">
+                Datos de la orden
+            </h6>
+        </a>
+        <div class="collapse show" id="collapseCardGenerales">
+            <div class="card-body">
+                <div class="row">
+                    <!-- Placa -->
+                    <div class="col-xl-2 col-md-2 mb-2">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Placa</h6>
+                            </div>
+                            <div class="card-body">
+                                Nissan
+                                NP300
+                                Ampertron
+                                2014
+                                400,400
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Cliente -->
+                    <div class="col-xl-6 col-md-6 mb-6">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Cliente</h6>
+                            </div>
+                            <div class="card-body">
+                                624772
+                                Distribuidora nacional de motocivletas
+                                Av rojo Gomez
+                                SN
+                                Local A y B
+                                Mexico Ciudad de Mexico
+                                Itlacalco
+                                Agricola Oriental
+                                05800
+                                DNM011010K25
+                                3331980458
+                                correomai.com
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Varios  -->
+                    <div class="col-xl-4 col-md-4 mb-4">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pagos-tab" data-toggle="tab" href="#pagos" role="tab" aria-controls="nav-pagos" aria-selected="true">
+                                    Pagos
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="autorizaciones-tab" data-toggle="tab" href="#autorizaciones" role="tab" aria-controls="nav-autorizaciones" aria-selected="false">
+                                    Autorizaciones
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="comentarios-tab" data-toggle="tab" href="#comentarios" role="tab" aria-controls="nav-comentarios" aria-selected="false">
+                                    Comentarios
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pagado-tab" data-toggle="tab" href="#pagado" role="tab" aria-controls="nav-pagado" aria-selected="false">
+                                    Pagado
+                                </a>
+                            </li>
+                            <li>    
+                                <a class="nav-link" id="otros-tab" data-toggle="tab" href="#otros" role="tab" aria-controls="nav-otros" aria-selected="false">
+                                    Otros
+                                </a>
+                            </li>
+                        </ul>
+                        
+                        <div class="tab-content"  id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="pagos" role="tabpanel" aria-labelledby="pagos-tab">
+                                Pagos
+                            </div>
+                            <div class="tab-pane fade" id="autorizaciones" role="tabpanel" aria-labelledby="autorizaciones-tab">
+                                Autorizacion
+                            </div>
+                            <div class="tab-pane fade" id="comentarios" role="tabpanel" aria-labelledby="comentarios-tab">
+                                Comentarios
+                            </div>
+                            <div class="tab-pane fade" id="pagado" role="tabpanel" aria-labelledby="pagado-tab">
+                                Pagado
+                            </div>
+                            <div class="tab-pane fade" id="otros" role="tabpanel" aria-labelledby="otros-tab">
+                                Otros
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Collapsable Card Example -->
+
+    <!-- Botones de Accion -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <button class="btn btn-danger">Eliminar</button>
+        <button class="btn btn-warning">Deshacer</button>
+        <button class="btn btn-primary">Imprimir</button>
+        <button class="btn btn-success">Facturar</button>
+        <button class="btn btn-primary">UB</button>
+
+        <button class="btn btn-primary">Validar</button>
+        <button class="btn btn-primary">Enviar Correo</button>
+        <button class="btn btn-primary">Imprimir Datos Del Vehiculo</button>
+        <button class="btn btn-primary">Codigo Abierto</button>
+        <button class="btn btn-primary">Garantia PLP</button>
+        <button class="btn btn-primary">Hacer Inspecion</button>
+        <button class="btn btn-primary">Imprimir Inspecion</button>
+        <button class="btn btn-primary">Cortesia</button>
+    </div>  
+    <!-- End Botones de Accion -->
+
+    <!-- Barra de informacion -->
+    <nav aria-label="breadcrumb" class="d-flex justify-content-end">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Información</li>
+            <li class="breadcrumb-item"><span class="badge badge-secundary">Saldado: </span> {{ 11443 | currency : "MXN" : "$ " : "1.0-2" }} </li>
+            <li class="breadcrumb-item"><span class="badge badge-secundary">Descuento: </span> {{ 8006.34 | currency : "MXN" : "$ " : "1.0-2" }} </li>
+            <li class="breadcrumb-item"><span class="badge badge-secundary">SubTotal: </span> {{ 9864.66 | currency : "MXN" : "$ " : "1.0-2" }} </li>
+            <li class="breadcrumb-item"><span class="badge badge-secundary">IVA: </span> {{ 1578.34 | currency : "MXN" : "$ " : "1.0-2" }} </li>
+            <li class="breadcrumb-item"><span class="badge badge-secundary">Total: </span> {{ 11443 | currency : "MXN" : "$ " : "1.0-2" }} </li>
+        </ol>
+    </nav>
+    <!-- End Barra de informacion -->
+
+    <div>
+        <ul class="nav nav-tabs" id="myTabTable" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="OrdenDeServicio-tab" data-toggle="tab" href="#OrdenDeServicio" role="tab" aria-controls="nav-OrdenDeServicio" aria-selected="true">
+                    Orden De Servicio
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="OperariosYGrupos-tab" data-toggle="tab" href="#OperariosYGrupos" role="tab" aria-controls="nav-OperariosYGrupos" aria-selected="true">
+                    Operarios Y Grupos
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content"  id="nav-tabContent">
+            <div class="tab-pane fade show active" id="OrdenDeServicio" role="tabpanel" aria-labelledby="OrdenDeServicio-tab">
+                <!-- Tabla de Servicios -->
+                <div class="table-responsive" id="contenido">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">Vivo</th>
+                                <th scope="col" class="text-center">No.</th>
+                                <th scope="col" class="text-center">Codigo</th>
+                                <th scope="col" class="text-center">Descripcion</th>
+                                <th scope="col" class="text-center">Cantidad</th>
+                                <th scope="col" class="text-center">Precio Unitario</th>
+                                <th scope="col" class="text-center">% Descuento</th>
+                                <th scope="col" class="text-center">Descuento</th>
+                                <th scope="col" class="text-center">SubTotal</th>
+                                <th scope="col" class="text-center">Iva</th>
+                                <th scope="col" class="text-center">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="text-center"><input type="checkbox" name="" id=""></th>
+                                <td class="text-center">1</td>
+                                <td class="text-center">08F0818O</td>
+                                <td class="text-left">Llanta 195 R15 Transforce CV Firestone</td>
+                                <td class="text-center">4</td>
+                                <td class="text-right">{{ 4058 | currency : "MXN" : "$ " : "1.0-2" }}</td>
+                                <td class="text-center">{{ 46 }} %</td>
+                                <td class="text-right">{{ 7466.72 | currency : "MXN" : "$ " : "1.0-2" }}</td>
+                                <td class="text-right">{{ 8765.28 | currency : "MXN" : "$ " : "1.0-2" }}</td>
+                                <td class="text-right">{{ 1402.44 | currency : "MXN" : "$ " : "1.0-2" }}</td>
+                                <td class="text-right">{{ 10167.72 | currency : "MXN" : "$ " : "1.0-2" }}</td>                    
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- End Tabla de Servicios -->
+            </div>
+
+            <div class="tab-pane fade" id="OperariosYGrupos" role="tabpanel" aria-labelledby="OperariosYGrupos-tab">
+                <!-- Tabla de Operarios Y Grupos -->
+                <div class="table-responsive" id="contenido">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">No. Servicio</th>
+                                <th scope="col" class="text-center">No. Operario</th>
+                                <th scope="col" class="text-center">Nombre del Operario</th>
+                                <th scope="col" class="text-center">No. Grupo</th>
+                                <th scope="col" class="text-center">Sin Cargo</th>
+                                <th scope="col" class="text-center">Codigo Abierto/th>
+                                <th scope="col" class="text-center">Solicitado</th>
+                                <th scope="col" class="text-center">Detectado</th>
+                                <th scope="col" class="text-center">Compra de Venta Inmediata</th>
+                                <th scope="col" class="text-center">Minutos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="text-center">1</th>
+                                <td class="text-center">4754</td>
+                                <td class="text-left">Coronejo Rubio Rene Gerardo</td>
+                                <td class="text-center">0</td>
+                                <td class="text-center"><input type="checkbox" name="" id=""></td>
+                                <td class="text-center"><input type="checkbox" name="" id=""></td>
+                                <td class="text-center"><input type="checkbox" name="" id=""></td>
+                                <td class="text-center"><input type="checkbox" name="" id=""></td>
+                                <td class="text-center"><input type="checkbox" name="" id=""></td>
+                                <td class="text-center">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- End Tabla de Operarios Y Grupos -->
+            </div> 
+        </div>
+    </div>
+
+    
+</div>

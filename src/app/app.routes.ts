@@ -16,7 +16,18 @@ export const routes: Routes = [
                 path: 'listaPrecios',
                 loadComponent: () => import('./business/lista-precios/lista-precios.component'),
                 canActivate: [AuthGuard]
+            },
+            {
+                path: 'ordenesDeServicio',
+                loadComponent: () => import('./business/ordenes-de-servicio/ordenes-de-servicio.component'),
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'ordeneDeServicio/:id_sucursal/:orden?',
+                loadComponent: () => import('./business/ordenes-de-servicio/orden-de-servicio/orden-de-servicio.component'),
+                canActivate: [AuthGuard]
             }
+
         ],
         canActivate: [AuthGuard]
     },

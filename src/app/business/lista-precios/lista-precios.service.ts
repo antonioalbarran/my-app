@@ -27,21 +27,22 @@ export class ListaPreciosService {
     const producto=[
         {nombre:"Llanta 205 70 R14 BRAVURIS 5HM BARUM",
           codigo:"05E0916O",
-          precio_max:1845,
+          precio_max:1847,
           precio:1384,
           precio_intel:1273,
           precio_3:1384,
-
-          precio_base:1845,
+          
+          //  no se muestra
+          precio_base:1846,
           precio_25:1384,
-          precio_iter:1273,
+          precio_inter:1273,
           precio_3_meses:1384,
-
+          
           existencia:0,
           red:4,
           promocion:"",
           codigo_albarran:"970 414 30",
-          id_line:5,
+          id_linea:5,
           id_clasificacion:2
         }
       ];
