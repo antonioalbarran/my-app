@@ -4,18 +4,22 @@ import { NavbarComponent } from '../../shared/components/navbar/navbar.component
 import { CommonModule } from '@angular/common';
 import { ListaPreciosService } from './lista-precios.service';
 import { AuthService } from '../../core/services/auth.service';
-
+import { ReactiveFormsModule,FormControl,FormGroup } from '@angular/forms'; 
 
 @Component({
   selector: 'app-lista-precios',
   standalone: true,
-  imports: [SidebarComponent,NavbarComponent,CommonModule],
+  imports: [SidebarComponent,NavbarComponent,CommonModule,ReactiveFormsModule ],
   templateUrl: './lista-precios.component.html',
   styleUrl: './lista-precios.component.css'
 })
 export default class ListaPreciosComponent implements OnInit {
   
-  
+  filtrarMedida = new FormGroup({
+    ancho: new FormControl(''),
+    alto: new FormControl(''),
+    rin: new FormControl(''),
+  })
   productos: any[] = [];
   productosAMostrar: any[] = [];
 
@@ -30,6 +34,10 @@ export default class ListaPreciosComponent implements OnInit {
   dosLlantas = false;
   tresLlantas = false;
   cuatroLlantas = false;
+
+  ancho: string = "";
+  alto: string = "";
+  rin: string = "";
 
   constructor(private service: AuthService,private listaPreciosService: ListaPreciosService) {}
 
@@ -96,13 +104,13 @@ export default class ListaPreciosComponent implements OnInit {
   }
 
   calculaPrecio(producto: any){
-    console.log(this.conServicios);
+    //console.log(this.conServicios);
     
     if(this.isLlanta(producto)){
-      producto.precio_max = (producto.precio_base + this.precioServicio())*this.cantidadDeLlantas;
-      producto.precio = (producto.precio_25 + this.precioServicio())*this.cantidadDeLlantas;
-      producto.precio_intel = (producto.precio_inter + this.precioServicio())*this.cantidadDeLlantas;
-      producto.precio_3 = (producto.precio_3_meses + this.precioServicio())*this.cantidadDeLlantas;
+      producto.precio_max = ( parseFloat(producto.precio_base) + this.precioServicio())*this.cantidadDeLlantas;
+      producto.precio = ( parseFloat(producto.precio_25) + this.precioServicio())*this.cantidadDeLlantas;
+      producto.precio_intel = (parseFloat(producto.precio_inter) + this.precioServicio())*this.cantidadDeLlantas;
+      producto.precio_3 = (parseFloat(producto.precio_3_meses) + this.precioServicio())*this.cantidadDeLlantas;
     }else{
       producto.precio_max = producto.precio_base;
       producto.precio = producto.precio_25;
@@ -113,9 +121,11 @@ export default class ListaPreciosComponent implements OnInit {
     if(this.conIVA){
       producto.precio_max = producto.precio_max*1.16;
       producto.precio = producto.precio*1.16;
-      producto.precio_intel = producto.precio_inter*1.16;
+      producto.precio_intel = producto.precio_intel*1.16;
       producto.precio_3 = producto.precio_3*1.16;
     }
+    
+    producto.promo = producto.promocion=='f'||''?'':'Promocion Propia';
 
     return producto;
   }
@@ -125,13 +135,21 @@ export default class ListaPreciosComponent implements OnInit {
   }
   tieneExistencia(producto: any) {
     if(this.conExistencia){
-      return producto.cantidad>0  
+      return parseInt(producto.existencia)>0;
     }
     return true;
   }
 
+  filtrarPorMedida(producto: any) {
+    let medidas = [this.filtrarMedida.get("ancho")?.value, this.filtrarMedida.get("alto")?.value, this.filtrarMedida.get("rin")?.value];
+    let regex = new RegExp(medidas.map(m => `(?=.*${m})`).join(''));
+    if(regex.test(producto.nombre)){
+      return true;
+    }
+    return false;
+  }
+
   isLlanta(producto: any): boolean {
-    console.log(producto.id_linea);
     if(producto.id_linea == 5 ||
       producto.id_linea == 8 ||
       producto.id_linea == 9 ||
@@ -161,9 +179,16 @@ export default class ListaPreciosComponent implements OnInit {
   }
 
   txt_rin(rin: string) {
-    //filtrar por medida
+    if(rin.length>=2){
+      this.productosAMostrar = this.productos.filter((producto) => this.filtrarPorMedida(producto)).filter((producto) => this.tieneExistencia(producto)).map((producto) => this.calculaPrecio(producto));
+    }
   }
-  actualizar(){}
+  actualizar(){
+    this.listaPreciosService.getProduct().subscribe(productos => {
+      this.productos = productos||[];
+      this.productosAMostrar = productos.map((producto) => this.calculaPrecio(producto))||[];
+    })
+  }
   getClassCSS(id_clasificacion: number) {
     switch (id_clasificacion) {
       case 4:

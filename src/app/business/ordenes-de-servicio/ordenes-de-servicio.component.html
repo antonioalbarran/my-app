@@ -26,25 +26,25 @@
                     </tr>   
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="text-center">Vigente</td>
-                        <td class="text-right">402</td>
-                        <td class="text-center">2024-09-04 11:19:46</td>
-                        <td class="text-center">TM275</td>
-                        <td class="text-center">2024-09-04 11:20:48</td>
-                        <td class="text-center">Distribuidora Nacional De Motocicletas</td>
-                        <td class="text-center">SN86837</td>
-                        <td class="text-center">Nissan</td>
-                        <td class="text-center">NP300</td>
-                        <td class="text-center">2014</td>
+                    <tr *ngFor="let orden of ordenes; let i = index" class="text-center">
+                        <td class="text-center">{{orden.vivo==true?'Vigente':'Cancelada'}}</td>
+                        <td class="text-right">{{orden.orden}}</td>
+                        <td class="text-center">{{orden.fh_inicio}}</td>
+                        <td class="text-center">{{orden.factura}}</td>
+                        <td class="text-center">{{orden.fh_creacion}}</td>
+                        <td class="text-center">{{orden.nombre}}</td>
+                        <td class="text-center">{{orden.placa}}</td>
+                        <td class="text-center">{{orden.marca}}</td>
+                        <td class="text-center">{{orden.modelo}}</td>
+                        <td class="text-center">{{orden.anio}}</td>
                         <td class="text-center">
-                            <a class="btn btn-success mr-2" [routerLink]="['/ordeneDeServicio',44,402]">
+                            <a class="btn btn-success mr-2" [routerLink]="['/ordeneDeServicio',orden.id_sucursal,orden.orden]">
                                 <i class="fas fa-eye"></i>
                             </a>
-                            <a class="btn btn-primary mr-2" [routerLink]="['/ordeneDeServicio',44,402]">
+                            <a class="btn btn-primary mr-2" [routerLink]="['/ordeneDeServicio',orden.id_sucursal,orden.orden]">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <a class="btn btn-danger" [routerLink]="['/ordeneDeServicio',44,402]">
+                            <a class="btn btn-danger" [routerLink]="['/ordeneDeServicio',orden.id_sucursal,orden.orden]">
                                 <i class="fas fa-trash"></i >
                             </a>
                         </td>

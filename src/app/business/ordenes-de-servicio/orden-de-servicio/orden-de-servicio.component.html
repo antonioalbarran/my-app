@@ -9,7 +9,7 @@
                     <input type="text" class="form-control" name="txt_factura" id="txt_factura" placeholder="Factura" readonly value=""/>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" name="txt_orden" id="txt_orden" placeholder="Orden"/>
+                    <input type="text" class="form-control" name="txt_orden" id="txt_orden" placeholder="Orden" value=""/>
                 </div>
                 <div class="col">
                     <input type="text" class="form-control" name="txt_placa" id="txt_placa" placeholder="Placa"/>
@@ -301,18 +301,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row" class="text-center"><input type="checkbox" name="" id=""></th>
-                                <td class="text-center">1</td>
-                                <td class="text-center">08F0818O</td>
-                                <td class="text-left">Llanta 195 R15 Transforce CV Firestone</td>
-                                <td class="text-center">4</td>
-                                <td class="text-right">{{ 4058 | currency : "MXN" : "$ " : "1.0-2" }}</td>
-                                <td class="text-center">{{ 46 }} %</td>
-                                <td class="text-right">{{ 7466.72 | currency : "MXN" : "$ " : "1.0-2" }}</td>
-                                <td class="text-right">{{ 8765.28 | currency : "MXN" : "$ " : "1.0-2" }}</td>
-                                <td class="text-right">{{ 1402.44 | currency : "MXN" : "$ " : "1.0-2" }}</td>
-                                <td class="text-right">{{ 10167.72 | currency : "MXN" : "$ " : "1.0-2" }}</td>                    
+                            <tr *ngFor="let orden of orden_contenido; let i = index" class="text-center">
+                                <th scope="row" class="text-center"><input type="checkbox" name="" id="" value="{{ orden.vivo?true:false }}"></th>
+                                <td class="text-center">{{orden.no_servicio}}</td>
+                                <td class="text-center">{{orden.id_producto}}    </td>
+                                <td class="text-left">{{orden.descripcion}}</td>
+                                <td class="text-center">{{orden.cantidad}}</td>
+                                <td class="text-right">{{ orden.precio | currency : "MXN" : "$ " : "1.0-2" }}</td>
+                                <td class="text-center">{{ orden.descuento }} %</td>
+                                <td class="text-right">{{ orden.descuento_aplicado | currency : "MXN" : "$ " : "1.0-2" }}</td>
+                                <td class="text-right">{{ orden.subtotal | currency : "MXN" : "$ " : "1.0-2" }}</td>
+                                <td class="text-right">{{ orden.iva | currency : "MXN" : "$ " : "1.0-2" }}</td>
+                                <td class="text-right">{{ orden.total | currency : "MXN" : "$ " : "1.0-2" }}</td>                    
                             </tr>
                         </tbody>
                     </table>
@@ -339,17 +339,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row" class="text-center">1</th>
-                                <td class="text-center">4754</td>
-                                <td class="text-left">Coronejo Rubio Rene Gerardo</td>
-                                <td class="text-center">0</td>
+                            <tr *ngFor="let orden of orden_contenido; let i = index" class="text-center">
+                                <th scope="row" class="text-center">{{orden.no_servicio}}</th>
+                                <td class="text-center">{{orden.id_operador}}</td>
+                                <td class="text-left"></td>
+                                <td class="text-center">{{orden.grupo}}</td>
                                 <td class="text-center"><input type="checkbox" name="" id=""></td>
                                 <td class="text-center"><input type="checkbox" name="" id=""></td>
                                 <td class="text-center"><input type="checkbox" name="" id=""></td>
                                 <td class="text-center"><input type="checkbox" name="" id=""></td>
                                 <td class="text-center"><input type="checkbox" name="" id=""></td>
-                                <td class="text-center">0</td>
+                                <td class="text-center">{{orden.minutos}}</td>
                             </tr>
                         </tbody>
                     </table>

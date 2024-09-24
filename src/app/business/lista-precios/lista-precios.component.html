@@ -25,9 +25,11 @@
       <div class="col-xl-4 col-md-4 mb-4">
         <label for="ancho">Filtrar por Medida</label>
         <div class="input-group">
-          <input type="text" class="form-control" name="ancho" id="ancho" #ancho placeholder="Ancho" (keyup)="txt_ancho(ancho.value,alto)">
-          <input type="text" class="form-control" name="alto" id="alto" #alto placeholder="Alto" (keyup)="txt_alto(alto.value,rin)">
-          <input type="text" class="form-control" name="rin" id="rin" #rin placeholder="Rin" (keyup)="txt_rin(rin.value)">
+          <form [formGroup]="filtrarMedida" class="form-inline">
+            <input type="number" class="form-control-sm" name="ancho" id="ancho" #ancho placeholder="Ancho" (keyup)="txt_ancho(ancho.value,alto)" formControlName="ancho" maxlength="5" size="10">
+            <input type="number" class="form-control-sm" name="alto" id="alto" #alto placeholder="Alto" (keyup)="txt_alto(alto.value,rin)" formControlName="alto" maxlength="5" size="10">
+            <input type="number" class="form-control-sm" name="rin" id="rin" #rin placeholder="Rin" (keyup)="txt_rin(rin.value)" formControlName="rin" maxlength="3" size="10">
+          </form>
         </div>
       </div>
     </div>
@@ -122,7 +124,7 @@
             </td>
             <td class="text-center">{{ producto.existencia }}</td>
             <td class="text-center">{{ producto.red }}</td>
-            <td class="text-center">{{ producto.promocion }}</td>
+            <td class="text-center">{{ producto.promo }}</td>
             <td class="text-center">{{ producto.codigo_albarran }}</td>
           </tr>
           <tr *ngIf="!productosAMostrar.length" class="bg-warning text-dark">

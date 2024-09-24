@@ -9,7 +9,8 @@ import { Observable, of } from 'rxjs';
 export class ListaPreciosService {
   private readonly http = inject(HttpClient);
 
-  private urlListaDePrecios = 'http://it.albarran.com.mx/endpoint/api/productos/v1/lista-precios?idSucursal=';
+  //private urlListaDePrecios = 'http://it.albarran.com.mx/endpoint/api/productos/v1/lista-precios?idSucursal=';
+  private urlListaDePrecios = 'http://localhost:4300/v1/list-de-precios';
 
   getAllProducts(token: string,id_sucursal: number): Observable<any> {
 
@@ -24,6 +25,7 @@ export class ListaPreciosService {
   }
 
   getProduct(): Observable<any[]> {
+    /*
     const producto=[
         {nombre:"Llanta 205 70 R14 BRAVURIS 5HM BARUM",
           codigo:"05E0916O",
@@ -46,6 +48,9 @@ export class ListaPreciosService {
           id_clasificacion:2
         }
       ];
-      return of(producto);
+      */
+      const producto = this.http.get<any[]>(this.urlListaDePrecios);
+
+      return producto;
   }
 }

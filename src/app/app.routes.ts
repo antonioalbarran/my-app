@@ -23,7 +23,7 @@ export const routes: Routes = [
                 canActivate: [AuthGuard]
             },
             {
-                path: 'ordeneDeServicio/:id_sucursal/:orden?',
+                path: 'ordeneDeServicio/:id_sucursal/:orden',
                 loadComponent: () => import('./business/ordenes-de-servicio/orden-de-servicio/orden-de-servicio.component'),
                 canActivate: [AuthGuard]
             }
