@@ -2,19 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
+import { environment } from '@envs/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  //private urlLogin = "http://it.albarran.com.mx/endpoint/api/auth/nomina/sign-in";
-  //private urlMe = "http://it.albarran.com.mx/endpoint/api/auth/me";
-
-  private LOGIN_URL = 'http://localhost:4300/v1/auth/login';
+  private LOGIN_URL = `${environment.API_URL}/v1/auth/login`;
   private tokenKey = 'authToken';
 
-  private REFRESH_URL = 'http://localhost:4300/v1/auth/refresh';
+  private REFRESH_URL = `${environment.API_URL}/v1/auth/refresh`;
   private refreshtokenKey = 'refreshToken';
 
   constructor(private httpClient: HttpClient, private router: Router) { }
@@ -68,7 +66,7 @@ export class AuthService {
          this.setRefreshToken(response.refreshToken );
          this.autoRefreshToken();
        }
-     }) 
+     })
     )
   }
 
@@ -82,7 +80,7 @@ export class AuthService {
     const payload = JSON.parse(atob(token.split('.')[1]));
     console.log("payload",payload);
     const exp = payload.exp * 1000;
-    
+
     const timeout = exp - Date.now()- (60*1000);
     setTimeout(() => {
       this.refreshToken().subscribe();
