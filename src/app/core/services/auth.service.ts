@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
+import { environment } from '@envs/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +12,16 @@ export class AuthService {
   //private urlLogin = "http://it.albarran.com.mx/endpoint/api/auth/nomina/sign-in";
   //private urlMe = "http://it.albarran.com.mx/endpoint/api/auth/me";
 
-  private LOGIN_URL = 'http://localhost:4300/v1/auth/login';
+  private LOGIN_URL = `${environment.API_URL}/v1/auth/login`;
   private tokenKey = 'authToken';
 
-  private REFRESH_URL = 'http://localhost:4300/v1/auth/refresh';
+  private REFRESH_URL = `${environment.API_URL}/v1/auth/refresh`;
   private refreshtokenKey = 'refreshToken';
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
   login(nomina: string, password: string): Observable<any>{
-    //console.log(nomina, password);
+    console.log(this.LOGIN_URL);
     return this.httpClient.post<any>(this.LOGIN_URL, {nomina, password}).pipe(
       tap(response => {
         if(response.token){
