@@ -69,7 +69,7 @@ export class AuthService {
          this.setRefreshToken(response.refreshToken );
          this.autoRefreshToken();
        }
-     }) 
+     })
     )
   }
 
@@ -83,7 +83,7 @@ export class AuthService {
     const payload = JSON.parse(atob(token.split('.')[1]));
     console.log("payload",payload);
     const exp = payload.exp * 1000;
-    
+
     const timeout = exp - Date.now()- (60*1000);
     setTimeout(() => {
       this.refreshToken().subscribe();

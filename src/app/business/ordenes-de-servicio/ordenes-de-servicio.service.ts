@@ -9,7 +9,7 @@ import { environment } from '@envs/environment';
 export class OrdenesDeServicioService {
     private readonly http = inject(HttpClient);
     private urlOrdenesDeServicio = `${environment.API_URL}/v1/ordenes`;
-    
+
     constructor() { }
 
     getFirst500Order(token: string): Observable<any[]> {
@@ -17,7 +17,7 @@ export class OrdenesDeServicioService {
         const headers = {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
-        }    
+        }
         const ordenes = this.http.get<any[]>(this.urlOrdenesDeServicio,{'headers':headers});
         return ordenes;
     }

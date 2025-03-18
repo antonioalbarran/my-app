@@ -12,7 +12,6 @@ export class ListaPreciosService {
 
   //private urlListaDePrecios = 'http://it.albarran.com.mx/endpoint/api/productos/v1/lista-precios?idSucursal=';
   private urlListaDePrecios = `${environment.API_URL}/v1/list-de-precios`;
-  
 
   getAllProducts(token: string,id_sucursal: number): Observable<any> {
 
@@ -35,13 +34,13 @@ export class ListaPreciosService {
           precio:1384,
           precio_intel:1273,
           precio_3:1384,
-          
+
           //  no se muestra
           precio_base:1846,
           precio_25:1384,
           precio_inter:1273,
           precio_3_meses:1384,
-          
+
           existencia:0,
           red:4,
           promocion:"",
